@@ -1,0 +1,14 @@
+<h1>Add Worker to Projects</h1>
+<p>Select the worker and the project you want to assign to him, then press 'Add Worker'</p>
+<p>You can see every project assigned to workers in project's show page</p>
+
+<%= form_with(model: @project_detail, local:true) do |f| %>
+
+  <%= f.label :worker_id %>
+  <%= f.select :worker_id, Worker.pluck(:name, :email, :id), id: :worker_project_id, prompt: "Select Worker"%>
+  <br>
+  <%= f.label :project_id %>
+  <%= f.select :project_id, Project.pluck(:name, :description, :id), id: :project_worker_id, prompt: "Select Project" %>
+  <br>
+  <%= f.submit 'Add worker' %>
+<% end %>

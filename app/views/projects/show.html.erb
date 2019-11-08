@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<h2> Workers</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+<% @all_workers.each do |worker| %>
+  <tr>
+    <td><%= worker.name %></td>
+    <td><%= worker.email %></td>
+    <td><%= link_to 'Eliminar trabajador', pd_delete_path(worker.project_worker(@project)), method: :delete  %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
